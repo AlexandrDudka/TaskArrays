@@ -9,7 +9,16 @@ public interface ArrayService {
 
     OptionalInt findMin(CustomArray customArray);
     OptionalInt findMax(CustomArray customArray);
-
     OptionalDouble calculateAverage(CustomArray customArray);
+    int calculateSum(CustomArray customArray);
 
+    int countPositive(CustomArray customArray);
+    int countNegative(CustomArray customArray);
+
+    void replaceNegativeWithZero(CustomArray customArray);
+
+    void sortBubble(CustomArray customArray);
+    void sortSelection(CustomArray customArray);
+
+    int sum(CustomArray customArray);
 }

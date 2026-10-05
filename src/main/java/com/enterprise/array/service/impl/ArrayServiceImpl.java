@@ -92,4 +92,177 @@ public class ArrayServiceImpl implements ArrayService {
 
         return OptionalDouble.of(average);
     }
+
+    @Override
+    public int calculateSum(CustomArray customArray){
+        if (customArray == null){
+            return 0;
+        }
+
+        int[] array = customArray.getArray();
+        if (array == null){
+            return 0;
+        }
+
+        int length = array.length;
+        if (length == 0){
+            return 0;
+        }
+
+        int sum = 0;
+        for (int i = 0; i < length; i++) {
+            int current = array[i];
+            sum = sum + current;
+        }
+
+        return sum;
+    }
+
+    @Override
+    public int countPositive(CustomArray customArray){
+        if (customArray == null){
+            return 0;
+        }
+
+        int[] array = customArray.getArray();
+        if (array == null) {
+            return 0;
+        }
+
+        int length = array.length;
+        if (length == 0){
+            return 0;
+        }
+
+        int count = 0;
+        for (int i = 0; i < length; i++) {
+            int current = array[i];
+            if (current > 0){
+                count = count + 1;
+            }
+        }
+
+        return count;
+    }
+
+    @Override
+    public int countNegative(CustomArray customArray) {
+        if (customArray == null) {
+            return 0;
+        }
+
+        int[] array = customArray.getArray();
+        if (array == null) {
+            return 0;
+        }
+
+        int length = array.length;
+        if (length == 0) {
+            return 0;
+        }
+
+        int count = 0;
+        for (int i = 0; i < length; i++) {
+            int current = array[i];
+            if (current < 0) {
+                count = count + 1;
+            }
+        }
+
+        return count;
+    }
+
+    @Override
+    public void replaceNegativeWithZero(CustomArray customArray) {
+        if (customArray == null) {
+            return;
+        }
+
+        int[] array = customArray.getArray();
+        if (array == null) {
+            return;
+        }
+
+        int length = array.length;
+        if (length == 0) {
+            return;
+        }
+
+        for (int i = 0; i < length; i++) {
+            int current = array[i];
+            if (current < 0) {
+                array[i] = 0;
+            }
+        }
+    }
+
+    @Override
+    public void sortBubble(CustomArray customArray) {
+        if (customArray == null) {
+            return;
+        }
+
+        int[] array = customArray.getArray();
+        if (array == null) {
+            return;
+        }
+
+        int length = array.length;
+        if (length == 0) {
+            return;
+        }
+
+        for (int i = 0; i < length - 1; i++) {
+            for (int j = 0; j < length - i - 1; j++) {
+                int first = array[j];
+                int second = array[j + 1];
+                if (first > second) {
+                    array[j] = second;
+                    array[j + 1] = first;
+                }
+            }
+        }
+    }
+
+    @Override
+    public void sortSelection(CustomArray customArray) {
+        if (customArray == null) {
+            return;
+        }
+
+        int[] array = customArray.getArray();
+        if (array == null) {
+            return;
+        }
+
+        int length = array.length;
+        if (length == 0) {
+            return;
+        }
+
+        for (int i = 0; i < length - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < length; j++) {
+                int current = array[j];
+                int minVal = array[minIndex];
+                if (current < minVal) {
+                    minIndex = j;
+                }
+            }
+            int temp = array[minIndex];
+            array[minIndex] = array[i];
+            array[i] = temp;
+        }
+    }
+
+    @Override
+    public int sum(CustomArray customArray) {
+        // Замените getContent() на ваш метод получения массива (например, getArray())
+        int[] array = customArray.getArray();
+        int sum = 0;
+        for (int value : array) {
+            sum += value;
+        }
+        return sum;
+    }
 }
