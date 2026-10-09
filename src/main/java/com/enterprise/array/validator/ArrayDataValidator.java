@@ -2,19 +2,13 @@ package com.enterprise.array.validator;
 
 public class ArrayDataValidator {
 
-    private static final String VALID_LINE_REGEX = "^(\\s*-?\\d+\\s*[,;\\-\\s]?\\s*)+$";
+    private static final String VALID_LINE_REGEX = "^\\s*(-?\\d+\\s*([,;\\-\\s]+\\s*-?\\d+\\s*)*)?$";
 
     public boolean isValidLine(String line) {
-        if (line == null) {
-            return false;
+        if (line != null) {
+            String trimmedLine = line.trim();
+            return trimmedLine.matches(VALID_LINE_REGEX);
         }
-
-        String trimmedLine = line.trim();
-        boolean isEmpty = trimmedLine.isEmpty();
-        if (isEmpty) {
-            return false;
-        }
-
-        return trimmedLine.matches(VALID_LINE_REGEX);
+        return false;
     }
 }

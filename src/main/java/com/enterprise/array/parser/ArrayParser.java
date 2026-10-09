@@ -2,7 +2,7 @@ package com.enterprise.array.parser;
 
 public class ArrayParser {
 
-    private static final String DELIMITER_REGEX = "[,;\\s\\-]+";
+    private static final String DELIMITER_REGEX = "[,;\\s]+|(?<=\\d)\\s*-\\s*";
 
     public int[] parseLine(String line) {
         if (line == null) {
@@ -19,9 +19,11 @@ public class ArrayParser {
         int[] result = new int[length];
 
         for (int i = 0; i < length; i++) {
-            String token = tokens[i];
-            int value = Integer.parseInt(token);
-            result[i] = value;
+            String token = tokens[i].trim();
+            if (!token.isEmpty()) {
+                int value = Integer.parseInt(token);
+                result[i] = value;
+            }
         }
 
         return result;

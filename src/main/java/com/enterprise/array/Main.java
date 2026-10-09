@@ -10,10 +10,15 @@ import com.enterprise.array.service.ArrayService;
 import com.enterprise.array.service.impl.ArrayServiceImpl;
 import com.enterprise.array.validator.ArrayDataValidator;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.List;
 import java.util.OptionalInt;
 
 public class Main {
+
+    private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) {
         CustomFileReader reader = new CustomFileReader();
@@ -25,23 +30,26 @@ public class Main {
         String filePath = "data/input.txt";
 
         try {
-            List lines = reader.readLines(filePath);
-            for (Object line : lines) {
-                if (validator.isValidLine((String) line)) {
-                    int[] numbers = parser.parseLine((String) line);
+            List<String> lines = reader.readLines(filePath);
+            for (String line : lines) {
+                boolean valid = validator.isValidLine(line);
+                if (valid) {
+                    int[] numbers = parser.parseLine(line);
                     CustomArray customArray = factory.createArray(numbers);
 
-                    int sum = service.sum(customArray);
+                    OptionalInt sum = service.calculateSum(customArray);
                     OptionalInt max = service.findMax(customArray);
 
-                    System.out.println("Массив успешно создан из строки: " + line);
-                    System.out.println("Сумма элементов: " + sum);
-                    System.out.println("Максимальный элемент: " + max);
+                    LOGGER.info("Array created successfully from line: {}", line);
+                    LOGGER.info("Array sum: {}", sum);
+                    LOGGER.info("Array max: {}", max);
                     break;
+                } else {
+                    LOGGER.warn("Invalid line skipped: {}", line);
                 }
             }
         } catch (CustomArrayException e) {
-            System.err.println("Ошибка при обработке файла: " + e.getMessage());
+            LOGGER.error("Error processing file: {}", filePath, e);
         }
     }
 }

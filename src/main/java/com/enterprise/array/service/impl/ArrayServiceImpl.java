@@ -9,26 +9,21 @@ import java.util.OptionalInt;
 public class ArrayServiceImpl implements ArrayService {
 
     @Override
-    public OptionalInt findMin(CustomArray customArray){
+    public OptionalInt findMin(CustomArray customArray) {
         if (customArray == null) {
             return OptionalInt.empty();
         }
 
         int[] array = customArray.getArray();
-
-        if (array == null) {
-            return OptionalInt.empty();
-        }
-
         int length = array.length;
-        if (length == 0){
+        if (length == 0) {
             return OptionalInt.empty();
         }
 
         int min = array[0];
         for (int i = 1; i < length; i++) {
             int current = array[i];
-            if (current < min){
+            if (current < min) {
                 min = current;
             }
         }
@@ -43,20 +38,15 @@ public class ArrayServiceImpl implements ArrayService {
         }
 
         int[] array = customArray.getArray();
-
-        if (array == null) {
-            return OptionalInt.empty();
-        }
-
         int length = array.length;
-        if (length == 0){
+        if (length == 0) {
             return OptionalInt.empty();
         }
 
         int max = array[0];
         for (int i = 1; i < length; i++) {
             int current = array[i];
-            if (current > max){
+            if (current > max) {
                 max = current;
             }
         }
@@ -65,20 +55,35 @@ public class ArrayServiceImpl implements ArrayService {
     }
 
     @Override
-    public OptionalDouble calculateAverage(CustomArray customArray){
+    public OptionalInt calculateSum(CustomArray customArray) {
+        if (customArray == null) {
+            return OptionalInt.empty();
+        }
 
-        if (customArray == null){
+        int[] array = customArray.getArray();
+        int length = array.length;
+        if (length == 0) {
+            return OptionalInt.empty();
+        }
+
+        int sum = 0;
+        for (int i = 0; i < length; i++) {
+            int current = array[i];
+            sum = sum + current;
+        }
+
+        return OptionalInt.of(sum);
+    }
+
+    @Override
+    public OptionalDouble calculateAverage(CustomArray customArray) {
+        if (customArray == null) {
             return OptionalDouble.empty();
         }
 
         int[] array = customArray.getArray();
-
-        if (array == null){
-            return OptionalDouble.empty();
-        }
-
         int length = array.length;
-        if (length == 0){
+        if (length == 0) {
             return OptionalDouble.empty();
         }
 
@@ -89,55 +94,22 @@ public class ArrayServiceImpl implements ArrayService {
         }
 
         double average = sum / length;
-
         return OptionalDouble.of(average);
     }
 
     @Override
-    public int calculateSum(CustomArray customArray){
-        if (customArray == null){
+    public int countPositive(CustomArray customArray) {
+        if (customArray == null) {
             return 0;
         }
 
         int[] array = customArray.getArray();
-        if (array == null){
-            return 0;
-        }
-
         int length = array.length;
-        if (length == 0){
-            return 0;
-        }
-
-        int sum = 0;
-        for (int i = 0; i < length; i++) {
-            int current = array[i];
-            sum = sum + current;
-        }
-
-        return sum;
-    }
-
-    @Override
-    public int countPositive(CustomArray customArray){
-        if (customArray == null){
-            return 0;
-        }
-
-        int[] array = customArray.getArray();
-        if (array == null) {
-            return 0;
-        }
-
-        int length = array.length;
-        if (length == 0){
-            return 0;
-        }
-
         int count = 0;
+
         for (int i = 0; i < length; i++) {
             int current = array[i];
-            if (current > 0){
+            if (current > 0) {
                 count = count + 1;
             }
         }
@@ -152,16 +124,9 @@ public class ArrayServiceImpl implements ArrayService {
         }
 
         int[] array = customArray.getArray();
-        if (array == null) {
-            return 0;
-        }
-
         int length = array.length;
-        if (length == 0) {
-            return 0;
-        }
-
         int count = 0;
+
         for (int i = 0; i < length; i++) {
             int current = array[i];
             if (current < 0) {
@@ -179,14 +144,7 @@ public class ArrayServiceImpl implements ArrayService {
         }
 
         int[] array = customArray.getArray();
-        if (array == null) {
-            return;
-        }
-
         int length = array.length;
-        if (length == 0) {
-            return;
-        }
 
         for (int i = 0; i < length; i++) {
             int current = array[i];
@@ -194,6 +152,8 @@ public class ArrayServiceImpl implements ArrayService {
                 array[i] = 0;
             }
         }
+
+        customArray.setArray(array);
     }
 
     @Override
@@ -203,14 +163,7 @@ public class ArrayServiceImpl implements ArrayService {
         }
 
         int[] array = customArray.getArray();
-        if (array == null) {
-            return;
-        }
-
         int length = array.length;
-        if (length == 0) {
-            return;
-        }
 
         for (int i = 0; i < length - 1; i++) {
             for (int j = 0; j < length - i - 1; j++) {
@@ -222,6 +175,8 @@ public class ArrayServiceImpl implements ArrayService {
                 }
             }
         }
+
+        customArray.setArray(array);
     }
 
     @Override
@@ -231,14 +186,7 @@ public class ArrayServiceImpl implements ArrayService {
         }
 
         int[] array = customArray.getArray();
-        if (array == null) {
-            return;
-        }
-
         int length = array.length;
-        if (length == 0) {
-            return;
-        }
 
         for (int i = 0; i < length - 1; i++) {
             int minIndex = i;
@@ -253,16 +201,7 @@ public class ArrayServiceImpl implements ArrayService {
             array[minIndex] = array[i];
             array[i] = temp;
         }
-    }
 
-    @Override
-    public int sum(CustomArray customArray) {
-        // Замените getContent() на ваш метод получения массива (например, getArray())
-        int[] array = customArray.getArray();
-        int sum = 0;
-        for (int value : array) {
-            sum += value;
-        }
-        return sum;
+        customArray.setArray(array);
     }
 }
