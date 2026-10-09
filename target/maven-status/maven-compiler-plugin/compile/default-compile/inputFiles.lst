@@ -1,0 +1,10 @@
+/Users/aleksandrdudka/IdeaProjects/learn/src/main/java/com/enterprise/array/exception/CustomArrayException.java
+/Users/aleksandrdudka/IdeaProjects/learn/src/main/java/com/enterprise/array/reader/CustomFileReader.java
+/Users/aleksandrdudka/IdeaProjects/learn/src/main/java/com/enterprise/array/entity/CustomArray.java
+/Users/aleksandrdudka/IdeaProjects/learn/src/main/java/com/enterprise/array/factory/impl/ArrayFactoryImpl.java
+/Users/aleksandrdudka/IdeaProjects/learn/src/main/java/com/enterprise/array/validator/ArrayDataValidator.java
+/Users/aleksandrdudka/IdeaProjects/learn/src/main/java/com/enterprise/array/Main.java
+/Users/aleksandrdudka/IdeaProjects/learn/src/main/java/com/enterprise/array/parser/ArrayParser.java
+/Users/aleksandrdudka/IdeaProjects/learn/src/main/java/com/enterprise/array/factory/ArrayFactory.java
+/Users/aleksandrdudka/IdeaProjects/learn/src/main/java/com/enterprise/array/service/ArrayService.java
+/Users/aleksandrdudka/IdeaProjects/learn/src/main/java/com/enterprise/array/service/impl/ArrayServiceImpl.java
