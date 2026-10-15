@@ -1,0 +1,11 @@
+2026-10-15 12:45:32 [com.enterprise.array.Main.main()] ERROR com.enterprise.array.Main - Error processing file: data/input.txt
+com.enterprise.array.exception.CustomArrayException: File not found at path: data/input.txt
+	at com.enterprise.array.reader.CustomFileReader.readLines(CustomFileReader.java:28) ~[classes/:?]
+	at com.enterprise.array.Main.main(Main.java:33) [classes/:?]
+	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:565) ~[?:?]
+	at org.codehaus.mojo.exec.AbstractExecJavaBase.executeMainMethod(AbstractExecJavaBase.java:402) [exec-maven-plugin-3.6.4.jar:3.6.4]
+	at org.codehaus.mojo.exec.ExecJavaMojo.executeMainMethod(ExecJavaMojo.java:142) [exec-maven-plugin-3.6.4.jar:3.6.4]
+	at org.codehaus.mojo.exec.AbstractExecJavaBase.doExecClassLoader(AbstractExecJavaBase.java:377) [exec-maven-plugin-3.6.4.jar:3.6.4]
+	at org.codehaus.mojo.exec.AbstractExecJavaBase.lambda$execute$0(AbstractExecJavaBase.java:287) [exec-maven-plugin-3.6.4.jar:3.6.4]
+	at java.lang.Thread.run(Thread.java:1516) [?:?]
